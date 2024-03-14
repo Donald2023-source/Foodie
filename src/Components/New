@@ -1,0 +1,64 @@
+// import { useEffect, useState } from 'react';
+// import Gyro from '../assets/Gyro Sandwhic.png';
+// import Enchilade from '../assets/Enchilade.png';
+// import GreenBeans from '../assets/GreenBeans.png';
+// import Pizza from '../assets/Pizza (2).png';
+// import Chicken from '../assets/Chicken pot pie.png';
+// import GreeSalad from '../assets/GreenSalad.png';
+// import Star from '../assets/Star.png';
+
+// const Products = () => {
+//   const products = [
+//     { name: 'Gyro Sandwhic', image: Gyro, rating: 4.9, price: '$15.00' },
+//     { name: 'Enchilada', image: Enchilade, rating: 4.8, price: '$12.00' },
+//     { name: 'Green Beans', image: GreenBeans, rating: 4.7, price: '$10.00' },
+//     { name: 'Pizza', image: Pizza, rating: 4.5, price: '$18.00' },
+//     { name: 'Chicken Pot Pie', image: Chicken, rating: 4.6, price: '$14.00' },
+//     { name: 'Green Salad', image: GreeSalad, rating: 4.9, price: '$9.00' },
+//   ];
+
+//   const [currentPosition, setCurrentPosition] = useState(0);
+
+//   useEffect(() => {
+//     const intervalId = setInterval(() => {
+//       setCurrentPosition((prevPosition) => (prevPosition + 1) % products.length);
+//     }, 600);
+
+//     return () => clearInterval(intervalId);
+//   }, [currentPosition, products.length]);
+
+//   return (
+//     <>
+//       <div className='mx-auto'>
+//         <span>
+//           <h4>Products</h4>
+//           <h2>Most Popular dishes</h2>
+//         </span>
+//         <div className={`grid grid-cols-3 place-content-center w-screen p-0 place-items-center gap-4 ${window.innerWidth <= 768 ? 'grid' : 'hidden'}`}>
+//           {products.map((product, index) => (
+//             <section key={index} className={`shadow-xl w-fit ${index === currentPosition ? 'current' : ''}`}>
+//               <img className='h-48 w-72' src={product.image} alt={`Product ${index}`} />
+//               <div className='flex items-center justify-between px-3 py-4'>
+//                 <span className='flex flex-col gap-4'>
+//                   <strong>{product.name}</strong>
+//                   <button className='border flex items-center justify-center p-2 rounded-2xl bg-[#f47628] text-white'>
+//                     Add Cart
+//                   </button>
+//                 </span>
+//                 <span className='flex flex-col gap-5 py-29'>
+//                   <span className='flex items-center gap-4'>
+//                     <img src={Star} alt='Star' />
+//                     <h4 className='text-xs'>{product.rating}</h4>
+//                   </span>
+//                   <h4>{product.price}</h4>
+//                 </span>
+//               </div>
+//             </section>
+//           ))}
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Products;
