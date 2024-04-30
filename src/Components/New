@@ -62,3 +62,12 @@
 // };
 
 // export default Products;
+
+<div className='flex flex-col justify-center'>
+<Navbar/>
+<Hero/>
+</div>
+<Products/>
+<div className='mt-24'>
+<Why />
+</div>

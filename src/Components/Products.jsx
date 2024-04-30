@@ -6,6 +6,7 @@ import GreenBeans from '../assets/GreenBeans.png';
 import Pizza from '../assets/Pizza (2).png';
 import Chicken from '../assets/Chicken pot pie.png';
 import GreeSalad from '../assets/GreenSalad.png';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   const products = [
@@ -74,7 +75,7 @@ const Products = () => {
                 </span>
                 </span>
                 <span className='flex items-center justify-between px-2 py-5 pb-5'>
-                <button className='border bg-[#F48E28] sm:p-2 p-3 rounded-[2rem] sm:text-sm md:bg-red-900 text-white text-sm'>Add to Cart</button>
+                <button className='border bg-[#F48E28] sm:p-2 p-3 rounded-[2rem] sm:text-sm text-white text-sm'>Add to Cart</button>
                 <h4>{product.price}</h4>
                 </span>
               </div>
@@ -82,7 +83,7 @@ const Products = () => {
           </div>
         )}
         <span className='hidden lg:block md:flex'>
-          <h4 className='font-semibold text-center rounded-full bg-[#F48E28] text-white py-4 w-32 border mt-5 hover:shadow-2xl cursor-pointer mx-auto flex justify-center'>See More</h4>
+          <h4 className='font-semibold text-center rounded-full bg-[#F48E28] text-white py-4 w-32 border mt-5 hover:shadow-2xl cursor-pointer mx-auto flex justify-center'><Link to={'/menu'}>See More</Link></h4>
         </span>
       </div>
     </>

@@ -2,32 +2,28 @@ import Logo from '../assets/Logo.png'
 import Search  from '../assets/Search.png'
 import Cart from '../assets/Cart.png'
 import Menu from '../assets/Menu.png'
+import { Link } from 'react-router-dom'
 
 import { useEffect, useRef, useState } from 'react'
 const Navbar = () => {
-
-   
      const inputRef = useRef(null);
-     const [isInputFocused, setIsInputfocused] =useState(false) 
-    
+     const [isInputFocused, setIsInputfocused] =useState(false)
+
         const HandleFocus = () => {
             setIsInputfocused(true);
             inputRef.current.focus();
         }
-
         const [nav, setNav] = useState(true)
 
-       function HandleNav() {
+       const HandleNav = () => {
         setNav(!nav)
-        document.body.style.overflowY='hidden'
        }
-       
+     
     return (
-
         <>
         <div>
             <nav>
-            <div className='lg:flex place-items-center items-center w-screen justify-around'>
+            <div className='lg:flex lg:gap-[8rem] lg:p-1 items-center w-screen justify-around md:p-5'>
                 
                 <div className='flex justify-between items-center'>
                     <span className='flex items-center font-bold text-[#f4762874]'>
@@ -35,15 +31,18 @@ const Navbar = () => {
                 <h4>IE</h4>
                 </span>
                
+               <span className='flex gap-5 items-center'>
+               <img className='h-8 lg:hidden cursor-pointer' src={Cart} alt='Cart' />
                 <img onClick={HandleNav} className='h-8 lg:hidden  cursor-pointer' src={Menu} />
+                </span>
                 </div>
 
                 <div>
-                <ul className={nav ? 'hidden  lg:flex gap-14' : 'lg:flex sm:block md:block gap-14 h-[100vh]'}>
-                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-r-4'><a href="/">Home</a></li>
-                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-r-4'><a href="/">Menu</a></li>
-                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-r-4'><a href="/">Service</a></li>
-                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-r-4'><a href="/">Shop</a></li>
+                <ul className={nav ? 'hidden lg:flex gap-14 ': 'lg:flex sm:block md:block gap-14 h-[100vh]'}>
+                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-r-4'><Link to={'/'}>Home</Link></li>
+                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-r-4'><Link to={'/menu'}>Menu</Link></li>
+                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-r-4'>Service</li>
+                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-r-4'>Shop</li>
                     </ul>
                 </div>
 
@@ -58,4 +57,4 @@ const Navbar = () => {
         </>
     )
     }
-export default Navbar 
+export default Navbar;

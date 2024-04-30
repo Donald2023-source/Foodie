@@ -1,30 +1,19 @@
-import { useState } from 'react'
-
-
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from "./Pages/Home"
+import Menu from "./Pages/Menu"
 import './App.css'
-import Navbar from './Components/Navbar'
-import Hero from './Components/Hero'
-import Products from './Components/Products'
-import Why from './Components/Why'
 
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
     <>
-    <div className='flex flex-col justify-center'>
-    <Navbar/>
-    <Hero/>
-    </div>
-  <Products/>
-
-    <Why />
- 
-  
- 
-   </>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={ <Home/>}/>
+      <Route path="/menu" element={<Menu/>}/>
+    </Routes>
+    </BrowserRouter>
+    </>
   )
 }
-
 export default App
