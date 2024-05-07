@@ -6,7 +6,18 @@ import Mushroom from '../assets/Mushroom.png'
 import Clock from '../assets/Clock.png'
 import Location from '../assets/Location.png'
 import Phone from '../assets/Phone.png'
+import Veg1 from '../assets/vegetables-752153_1280.jpg'
+import Veg2 from '../assets/vegetables-1584999_1280.jpg'
+import spaghetti from '../assets/spaghetti-2931846_1280.jpg'
+import Food from '../assets/8e5ba7ec864dcd8d4c2b7183b50e18cd.jpg'
+import HamB from '../assets/hamburger-494706_1280.jpg'
+import Skillet from '../assets/Lemon Garlic Butter Steak and Broccoli Skillet.jpg'
+import pepperoni from '../assets/Pepperoni and Burrata Pizza with Pesto.jpg'
+import JackB from '../assets/Shrimp Rice.jpg'
+import mPasta from '../assets/Meatball pasta.jpg'
+import Saucy from '../assets/Saucy Noodles.jpg'
 import '../App.css'
+
 
 const Hero = () => {
     return (
@@ -52,7 +63,7 @@ const Hero = () => {
         </div>
 
         <div>
-            <div className='flex justify-around items-center flex-wrap lg:gap-[0.5rem]  sm:gap-4 md:justify-between sm:justify-between shadow-lg p-10 lg:w-[90%] md:w-[100%] mt-6 sm:w-[100%] gap-5 w-screen rounded-2xl lg:mx-auto'>
+            <div className='flex justify-around lg:mt-12 items-center flex-wrap lg:gap-[0.5rem]  sm:gap-4 md:justify-between sm:justify-between shadow-lg p-10 lg:w-[90%] md:w-[100%] mt-6 sm:w-[100%] gap-5 w-screen rounded-2xl lg:mx-auto'>
                 <span className='text-center flex flex-col gap-6 items-center'>
                     <img className='bg-[#f47628] p-3 rounded-[50%]' src={Clock} />
                     <h3 className='font-bold text-xs lg:text-lg md:text-sm sm:text-xs'>Today 8:00am - 8:00pm</h3>
@@ -72,7 +83,53 @@ const Hero = () => {
                 </span>
             </div>
         </div>
+
+        {/* <div>
+            <section className='grid grid-cols-2'>
+                <div>
+                    <img src={Food} alt="" />
+                </div>
+                <div>
+                    <img src={Veg1} alt="" />
+                </div>
+                <div>
+                    <img src={Veg2} alt="" />
+                </div>
+                
+                <div>
+                    <img src={HamB} alt="" />
+                </div>
+                <div>
+                    <img src={spaghetti} alt="" />
+                </div>
+                
+                <div>
+                    <img src={Skillet} alt="" />
+                </div>
+                <div className='mt-[-5rem]'>
+                    <img src={Skillet} alt="" />
+                </div>
+                <div>
+                    <img src={Veg2} alt="" />
+                </div>
+                <div>
+                    <img src={JackB} alt="" />
+                </div>
+                <div>
+                    <img src={mPasta} alt="" />
+                </div>
+                <div>
+                    <img src={spaghetti} alt="" />
+                </div>
+                <div>
+                    <img src={pepperoni} alt="" />
+                </div>
+                <div>
+                    <img src={Saucy} alt="" />
+                </div>
+            </section>
+        </div> */}
         </>
     )
-}
+    }
 export default Hero

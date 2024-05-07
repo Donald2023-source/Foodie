@@ -63,11 +63,272 @@
 
 // export default Products;
 
-<div className='flex flex-col justify-center'>
-<Navbar/>
-<Hero/>
-</div>
-<Products/>
-<div className='mt-24'>
-<Why />
-</div>
+// <div className='flex flex-col justify-center'>
+// <Navbar/>
+// <Hero/>
+// </div>
+// <Products/>
+// <div className='mt-24'>
+// <Why />
+// </div>
+
+
+
+
+
+
+import Navbar from "../Components/Navbar";
+import { useState } from "react";
+import Gyro from '../assets/Gyro Sandwhic.png';
+import Star from '../assets/Star.png';
+import Enchilade from '../assets/Enchilade.png';
+import GreenBeans from '../assets/GreenBeans.png';
+import Pizza from '../assets/Pizza (2).png';
+import Chicken from '../assets/Chicken pot pie.png';
+import GreeSalad from '../assets/GreenSalad.png';
+import { FaPlus } from 'react-icons/fa';
+
+const Menu = () => {
+  // State to track the selected product
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // Products list
+  const products = [
+    { name: 'Gyro Sandwich', image: Gyro, rating: 4.9, price: '$15.00' },
+    { name: 'Enchilada', image: Enchilade, rating: 4.8, price: '$12.00' },
+    { name: 'Green Beans', image: GreenBeans, rating: 4.7, price: '$10.00' },
+    { name: 'Pizza', image: Pizza, rating: 4.5, price: '$18.00' },
+    { name: 'Chicken Pot Pie', image: Chicken, rating: 4.6, price: '$14.00' },
+    { name: 'Green Salad', image: GreeSalad, rating: 4.9, price: '$9.00' },
+  ];
+
+  return (
+    <>
+      <Navbar />
+      <div>
+        <p className="text-xl text-center leading-[3rem] py-4 sm:px-3 lg:w-[60rem]">
+          <span className="text-[#F48E28] font-bold">Foodie</span> offers a diverse menu with something for everyone.
+        </p>
+
+        {/* Display the selected product's details if any is selected */}
+        {selectedProduct && (
+          <div className="text-center text-2xl font-bold my-4">
+            <div>
+              <img src={selectedProduct.image} alt={selectedProduct.name} className="mx-auto w-[200px] rounded-xl" />
+            </div>
+            <p>Selected Product: {selectedProduct.name}</p>
+          </div>
+        )}
+
+        <div className="grid lg:grid-cols-4 gap-5 px-3 place-content-center place-items-center md:grid-cols-3">
+          {products.map((product, index) => (
+            <div
+              className="shadow-lg hover:shadow-2xl cursor-pointer rounded-xl w-[23rem] lg:w-[18rem] md:w-[15rem] sm:w-[17rem]"
+              key={index}
+              onClick={() => setSelectedProduct(product)}
+            >
+              <img className="lg:w-[20rem] rounded-2xl mx-auto lg:h-[14rem]" src={product.image} alt={product.name} />
+              <span className="flex justify-between lg:px-4 px-2 pt-4">
+                <h4 className="font-bold">{product.name}</h4>
+                <span className="flex items-center gap-3">
+                  <img src={Star} alt="Star" />
+                  <h5>{product.rating}</h5>
+                </span>
+              </span>
+              <span>
+                <h4 className="font-bold text-[#F48E28] text-center p-5">{product.price}</h4>
+                <button className="flex items-center mx-auto gap-2 border p-3 my-2 rounded-xl hover:bg-black hover:text-white transition ease-in-out duration-500">
+                  <FaPlus size={20} color={'#F48E28'} />
+                  <h4>Order</h4>
+                </button>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Menu;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState } from 'react';
+import Navbar from '../Components/Navbar';
+import Menu from '../Components/Menu';
+
+// Parent Component to manage cart visibility
+const MainComponent = () => {
+  // State to track cart visibility
+  const [isCartVisible, setIsCartVisible] = useState(false);
+
+  // Function to toggle cart visibility
+  const toggleCart = () => {
+    setIsCartVisible((prevState) => !prevState);
+  };
+
+  return (
+    <div>
+      {/* Pass state and function to Navbar */}
+      <Navbar isCartVisible={isCartVisible} toggleCart={toggleCart} />
+
+      {/* Pass function to Menu */}
+      <Menu toggleCart={toggleCart} />
+    </div>
+  );
+};
+
+export default MainComponent;
+
+// Navbar Component
+const Navbar = ({ isCartVisible, toggleCart }) => {
+  return (
+    <div>
+      <h1>My Navbar</h1>
+      {/* Conditionally render cart icon based on state */}
+      {isCartVisible && <div>🛒 Cart Icon</div>}
+      <button onClick={toggleCart}>Toggle Cart</button>
+    </div>
+  );
+};
+
+// Menu Component
+const Menu = ({ toggleCart }) => {
+  return (
+    <div>
+      <button onClick={toggleCart}>Toggle Cart from Menu</button>
+      {/* Other Menu content */}
+    </div>
+  );
+};
+
+export default Menu;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { createContext, useContext, useState } from 'react';
+import Navbar from '../Components/Navbar';
+import Menu from '../Components/Menu';
+
+// Create a context for cart visibility
+const CartContext = createContext();
+
+// Context Provider
+const CartProvider = ({ children }) => {
+  const [isCartVisible, setIsCartVisible] = useState(false);
+
+  const toggleCart = () => {
+    setIsCartVisible((prevState) => !prevState);
+  };
+
+  return (
+    <CartContext.Provider value={{ isCartVisible, toggleCart }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+
+
+// Navbar Component
+const Navbar = () => {
+  const { isCartVisible, toggleCart } = useContext(CartContext);
+
+  return (
+    <div>
+      <h1>Navbar with Cart Icon</h1>
+      {isCartVisible && <div>🛒 Cart Icon</div>}
+      <button onClick={toggleCart}>Toggle Cart</button>
+    </div>
+  );
+};
+
+// Menu Component
+const Menu = () => {
+  const { toggleCart } = useContext(CartContext);
+
+  return (
+    <div>
+      <button onClick={toggleCart}>Toggle Cart from Menu</button>
+      {/* Other Menu content */}
+    </div>
+  );
+};
+
+// Main Component with Context
+const App = () => {
+  return (
+    <CartProvider>
+      <Navbar />
+      <Menu />
+    </CartProvider>
+  );
+};
+
+export default App;
+
+Kitchen Utencils. 
+Mini catering Services
+Food Items - Category - Canned, Raw, Packaged
