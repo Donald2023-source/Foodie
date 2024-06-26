@@ -1,90 +1,67 @@
-import Navbar from "../Components/Navbar";
+import { FaPlus } from "react-icons/fa";
+import data from "../menuData";
+import { FaStar } from "react-icons/fa";
 import { useContext, useState } from "react";
-import Gyro from '../assets/Gyro Sandwhic.png';
-import Star from '../assets/Star.png';
-import Enchilade from '../assets/Enchilade.png';
-import GreenBeans from '../assets/GreenBeans.png';
-import Pizza from '../assets/Pizza (2).png';
-import Chicken from '../assets/Chicken pot pie.png';
-import GreeSalad from '../assets/GreenSalad.png';
-import { FaPlus } from 'react-icons/fa';
 import { CardContext } from "../Context/CardContext";
+import { Link } from "react-router-dom";
 import { FaMinus } from "react-icons/fa";
-
-
+import { CartProvider, useCart } from "react-use-cart";
+import Cart from "../Components/Cart";
+import ProductCard from "../Components/ProductCard";
+import Navbar from "../Components/Navbar";
 const Menu = () => {
-    const {addProduct, isCardVisible, increment, selectedProducts, handleTogglecart, removeProduct, handleOutsideClick} = useContext(CardContext)
-  const products = [
-    { name: 'Gyro Sandwich', image: Gyro, rating: 4.9, price: '$15.00' },
-    { name: 'Enchilada', image: Enchilade, rating: 4.8, price: '$12.00' },
-    { name: 'Green Beans', image: GreenBeans, rating: 4.7, price: '$10.00' },
-    { name: 'Pizza', image: Pizza, rating: 4.5, price: '$18.00' },
-    { name: 'Chicken Pot Pie', image: Chicken, rating: 4.6, price: '$14.00' },
-    { name: 'Green Salad', image: GreeSalad, rating: 4.9, price: '$9.00' },
-  ];
+  const { addItem, items } = useCart();
+ 
+  const { handleOutsideClick, searchToggle } = useContext(CardContext);
 
   return (
-    <> 
-    <div className="fixed top-0 left-0 bg-white">
-       <Navbar/>
-    </div>
-     
-      <div className="relative">
-        {isCardVisible && (
-          <div className="bg-white w-[20rem] absolute right-1 shadow-lg rounded-lg top-10">
-            {selectedProducts.length > 0 ? (
-              selectedProducts.map((product, index) => (
-              <div className="flex flex-col items-center">
-                <div key={index} className="flex items-center gap-4 p-2">
-                  <img src={product.image} alt={product.name} className="w-10" />
-                  <p>{product.name}</p>
-                  <p>{product.price}</p>
-                 <FaMinus onClick={() => removeProduct(index)} className="cursor-pointer" size={30} color={'#F48E28'}/>
-                </div>
-                </div>
-              ))
-            ) : (
-              <div>
-                <p className="text-center py-3">Your Cart is Empty.</p>
-              </div>
-            )}
-            {selectedProducts.length != 0 &&(
-              <button className="border py-3 px-5 pointer mb-2 mx-auto flex rounded-xl">Check Out</button>
-            )}
+    <>
+            <div className="bg-white">
+              <Navbar />
+      </div>
+      <div onClick={handleOutsideClick}>
+             <Cart />
+              <h2 className="font-bold text-center text-2xl  text-[#F48E28]">Menu</h2>
+
+        <div className="py-5">
+          <p className="text-xl mx-auto text-center leading-[3rem] py-4 sm:px-3 lg:w-[60rem]">
+            <span className="text-[#F48E28]  font-bold">Foodie</span> has a menu
+            that lets you pick your favorites.
+          </p>
+          <div>
+            <input
+              className={
+                searchToggle
+                  ? "border p-2 absolute top-10 right-2 rounded-lg shadow-md"
+                  : "hidden"
+              }
+              type="text"
+              onChange={(event) => {
+                // console.warn(event.target.value)
+                // {items.filter((item) => item.name === event.target.)}
+              }}
+              
+              placeholder="Search"
+            />
             
           </div>
-          
-        )}
-      </div>
-      <div onClick={handleOutsideClick} className="py-5">
-        <p className="text-xl text-center leading-[3rem] py-4 sm:px-3 lg:w-[60rem]">
-          <span className="text-[#F48E28] font-bold">Foodie</span> has a menu that lets you pick your favorites.
-        </p>
+        </div>
 
-        <div className="grid lg:grid-cols-4 gap-5 px-3 place-content-center place-items-center md:grid-cols-3">
-          {products.map((product, index) => (
-            <div
-              className="shadow-lg hover:shadow-2xl cursor-pointer rounded-xl w-[23rem] lg:w-[18rem] md:w-[15rem] sm:w-[17rem]"
-              key={index}
-              onClick={() => addProduct(product)}
-            >
-              <img className="lg:w-[20rem] rounded-2xl mx-auto lg:h-[14rem]" src={product.image} alt={product.name} />
-              <span className="flex justify-between lg:px-4 px-2 pt-4">
-                <h4 className="font-bold">{product.name}</h4>
-                <span className="flex items-center gap-3">
-                  <img src={Star} alt="Star" />
-                  <h5>{product.rating}</h5>
-                </span>
-              </span>
-              <span>
-                <h4 className="font-bold text-[#F48E28] text-center p-5">{product.price}</h4>
-                <button onClick={increment} className="flex items-center mx-auto gap-2 border p-3 my-2 rounded-xl hover:bg-black hover:text-white transition ease-in-out duration-500">
-                  <FaPlus size={20} color={'#F48E28'} />
-                  <h4>Order</h4>
-                </button>
-              </span>
-            </div>
-          ))}
+        <div className="grid lg:grid-cols-4 md:gap-5 gap-10 px-3 place-content-center place-items-center md:grid-cols-3">
+          {data.productsData.map((item, index) => {
+            return (
+              <div className="shadow-lg hover:shadow-2xl cursor-pointer rounded-xl w-[23rem] lg:w-[18rem] md:w-[15rem] sm:w-[17rem]">
+                <ProductCard
+                  image={item.image}
+                  name={item.name}
+                  price={item.price}
+                  item={item}
+                  rating={item.rating}
+                  key={index}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

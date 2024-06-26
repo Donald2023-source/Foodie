@@ -1,25 +1,29 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const CardContext = createContext();
 
 export const CardProvider = ({ children }) => {
   const [isCardVisible, setCardVisible] = useState(false);
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  // const [selectedProducts, setSelectedProducts] = useState([]);
+  const [searchToggle, setSearchToggle] = useState(false);
 
-  const addProduct = (product) => {
-    setSelectedProducts((prev) => [...prev, product]);
-  };
+  // useEffect(() => {
+  //   const savedCart = localStorage.getItem("selectedProducts");
+  //   if (savedCart) {
+  //     setSelectedProducts(JSON.parse(savedCart));
+  //   }
+  // }, []);
 
-  const removeProduct = (index) => {
-    setSelectedProducts((prev) => prev.filter((_, i) => i !== index));
-  };
-  
   const handleOutsideClick = (e) => {
     if (isCardVisible && !e.target.closest(".cart-container")) {
-      setCardVisible(false),
-      console.log("I'm clicked")
-    }
+      setCardVisible(false);
+    } 
   };
+
+  const handleSearchToggle = () => {
+    setSearchToggle(!searchToggle);
+  };
+
 
 
   return (
@@ -27,10 +31,9 @@ export const CardProvider = ({ children }) => {
       value={{
         isCardVisible,
         setCardVisible,
-        selectedProducts,
-        addProduct,
-        removeProduct,
-        handleOutsideClick
+        handleOutsideClick,
+        handleSearchToggle,
+        searchToggle,
       }}
     >
       {children}
