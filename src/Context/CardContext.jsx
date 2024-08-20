@@ -7,7 +7,10 @@ export const CardProvider = ({ children }) => {
   // const [selectedProducts, setSelectedProducts] = useState([]);
   const [searchToggle, setSearchToggle] = useState(false);
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
   // useEffect(() => {
   //   const savedCart = localStorage.getItem("selectedProducts");
   //   if (savedCart) {
@@ -21,8 +24,11 @@ export const CardProvider = ({ children }) => {
     } 
   };
 
+<<<<<<< HEAD
   const [isAside, setIsAside] = useState(false);
  
+=======
+>>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
   const handleSearchToggle = () => {
     setSearchToggle(!searchToggle);
   };
@@ -37,8 +43,11 @@ export const CardProvider = ({ children }) => {
         handleOutsideClick,
         handleSearchToggle,
         searchToggle,
+<<<<<<< HEAD
         isAside,
         setIsAside
+=======
+>>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
       }}
     >
       {children}
