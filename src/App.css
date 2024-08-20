@@ -1,0 +1,24 @@
+body{
+    overflow-x: hidden;
+}
+
+body.light {
+    background-color: white;
+    color: black;
+  }
+  
+body.dark {
+    background-color: black;
+    color: white;
+}
+
+.card.dark{
+    background-color: rgba(90, 90, 90, 0.275);
+}
+
+.card.light {
+    background-color: white;
+}
+
+
+  
