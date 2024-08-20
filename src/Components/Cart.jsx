@@ -19,23 +19,14 @@ const Cart = () => {
         <>
         <div>
         </div>
-<<<<<<< HEAD
         <div>
-=======
-        <div className={isCardVisible ? 'block h-fit' : 'hidden'}>
->>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
         {isEmpty ? (
             <div className="bg-white lg:w-[30rem] w-[20rem] lg:right-16 lg:top-14 fixed right-1 shadow-lg rounded-lg top-10 py-4">
             <h2 className="text-center font-medium">Your cart is empty</h2>
             </div>
         ) : (
-<<<<<<< HEAD
                <div className="bg-white flex flex-col items justify-center gap-4 lg:w-[30rem] w-[20rem] lg:right-16 lg:top-14 fixed right-1 shadow-lg rounded-lg top-10 py-4" >
                 {items.map((item, index) => {
-=======
-               <div className={isCardVisible ? "bg-white flex flex-col items justify-center gap-4 lg:w-[30rem] w-[20rem] lg:right-16 lg:top-14 fixed right-1 shadow-lg rounded-lg top-10 py-4" : 'hidden'}>
-    {items.map((item, index) => {
->>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
         return ( 
             <div className="flex items-center justify-between px-5" key={index}>
             <img className="w-10 rounded-md" src={item.image} alt="" />
@@ -49,21 +40,13 @@ const Cart = () => {
     <div className="flex gap-2 items-center mx-auto">
         <Link to={"/checkout"}>
         <button 
-<<<<<<< HEAD
         className="flex items-center mx-auto gap-2 border p-2 my-2 rounded-xl hover:bg-black hover:text-white transition ease-in-out duration-500">
-=======
-        className="flex items-center mx-auto gap-2 py-1 border px-3 my-2 rounded-xl hover:bg-black hover:text-white transition ease-in-out duration-500">
->>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
             Checkout
         </button>
         </Link>
         <button 
         onClick={() => emptyCart(items)}
-<<<<<<< HEAD
         className="flex items-center mx-auto gap-2 border p-2 my-2 rounded-lg
-=======
-        className="flex items-center mx-auto gap-2 border py-1 px-3 my-2 rounded-xl
->>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
          hover:bg-black hover:text-white transition ease-in-out duration-500">
             Clear Cart
         </button>

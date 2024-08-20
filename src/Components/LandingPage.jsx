@@ -28,21 +28,13 @@ const LandingPage = () => {
   return (
     <>
       <div className='border bg-black flex justify-center h-screen overflow-hidden lg:gap-8 p-0 m-0'>
-<<<<<<< HEAD
        
-=======
-        {/* For large screens: display three images */}
->>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
         <div className="hidden lg:flex justify-between w-full h-full">
           {Images.map((image) => (
             <img key={image.id} src={image} alt="" />
           ))}
         </div>
 
-<<<<<<< HEAD
-=======
-        {/* For small screens: display one image */}
->>>>>>> 814157c7b21617e8c5d0ca4def52305bd3730122
         <div className="lg:hidden w-full h-full">
           <img src={Images[currentIndex]} alt="" className="w-full h-full object-cover" />
         </div>
