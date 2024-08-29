@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { FaHeart, FaPlus } from "react-icons/fa";
 import { useCart } from "react-use-cart";
+import { useTheme } from "../Context/themeContext";
 
 const ProductCard = (props) => {
     const { addItem } = useCart();
@@ -36,8 +37,10 @@ const ProductCard = (props) => {
         });
     };
 
+    const { theme } = useTheme();
+
     return (
-        <div className="relative rounded-2xl overflow-hidden shadow-xl">
+        <div className={`relative card ${theme} rounded-2xl card overflow-hidden shadow-xl`}>
             <img className="w-full h-[200px] object-cover" src={props.image} alt={props.name} />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                 <FaHeart

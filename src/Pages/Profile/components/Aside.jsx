@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from 'react-use-cart';
 import { CardContext } from '../../../Context/CardContext';
 import logo from '../../../assets/Logo.png'
+import { useTheme } from '../../../Context/themeContext';
 
 const SideBar = () => {
     const { isAside, setIsAside } = useContext(CardContext);
@@ -14,6 +15,7 @@ const SideBar = () => {
     const [likedProducts, setLikedProducts] = useState([]);
     const sidebarRef = useRef(null);
 
+    const { theme } = useTheme()
     useEffect(() => {
         const storedFavourites = JSON.parse(localStorage.getItem('likedProducts')) || [];
         setLikedProducts(storedFavourites);
@@ -44,7 +46,7 @@ const SideBar = () => {
                 />
             </nav>
 
-            <div className='hidden lg:flex lg:w-[25%] bg-white flex-col justify-between py-10 px-5 shadow-lg h-screen fixed'>
+            <div className={`hidden lg:flex card ${theme} lg:w-[25%] bg-white flex-col justify-between py-10 px-5 shadow-lg h-screen fixed`}>
             <div>
             <img className='h-10 mb-10 w-fit' src={logo} alt="" />
                 <ul className='flex flex-col gap-10'>
@@ -98,8 +100,8 @@ const SideBar = () => {
             <AnimatePresence>
                 {isAside && (
                     <motion.div
-                        ref={sidebarRef} // Attach the ref to the sidebar
-                        className='lg:hidden h-screen absolute shadow-lg bg-white rounded-lg px-3 w-[60%] flex flex-col justify-between py-10 z-50'
+                        ref={sidebarRef} 
+                        className={`lg:hidden h-screen aside ${theme} absolute shadow-lg bg-white rounded-lg px-3 w-[60%] flex flex-col justify-between py-10 z-50`}
                         initial={{ x: '-100%' }}
                         animate={{ x: 0 }}
                         exit={{ x: '-100%' }}

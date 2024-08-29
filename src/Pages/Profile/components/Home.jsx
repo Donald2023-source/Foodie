@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import data from '../../../data/menuData';
 import { Link } from 'react-router-dom';
+import { FaMoon } from 'react-icons/fa';
+import { useTheme } from '../../../Context/themeContext';
+import '../../../App.css'
 const Home = () => {
   const [selectedTab, setSelectedTab] = useState('Breakfast');
 
@@ -39,6 +42,8 @@ const Home = () => {
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
   };
+
+  const {theme} = useTheme()
 
   return (
     <div className='w-[100%]'>
@@ -123,13 +128,13 @@ const Home = () => {
         </motion.div>
 
         <motion.div
-          className='w-[90%] mt-8 grid place-content-center place-items-center cursor-pointer lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4'
+          className={`w-[90%] mt-8 grid place-content-center place-items-center cursor-pointer lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
         >
           {displayedItems.map((item, id) => (
-            <div key={id} className='bg-white hover:shadow-xl w-fit p-4 rounded-lg shadow-md'>
+            <div key={id} className={`bg-white card ${theme} hover:shadow-xl w-fit p-4 rounded-lg shadow-md`}>
               <img src={item.image} alt={item.name} className='w-30 h-[200px] object-cover rounded-lg' />
               <h3 className='mt-4 text-center text-lg font-semibold'>{item.name}</h3>
             </div>

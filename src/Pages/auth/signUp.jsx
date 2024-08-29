@@ -3,8 +3,7 @@ import signUpImg from '../../assets/Wavy Buddies Out of Stock.png'
 import logo from '../../assets/Logo.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Context/authContext'
-
-
+import { Puff } from 'react-loader-spinner'
 
 const SignUp = () => {
 
@@ -12,7 +11,8 @@ const SignUp = () => {
   const [form, setForm] = useState({
     userName: '',
     password: ''
-  })
+  });
+  const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()
 
@@ -24,6 +24,7 @@ const SignUp = () => {
   
 
   const authentication = (e) => {
+    setIsLoading(true)
     e.preventDefault();
     fetch('https://dummyjson.com/auth/login', {
         method: 'POST',
@@ -40,19 +41,18 @@ const SignUp = () => {
         localStorage.setItem('token', data.token)
         console.log(data.token); 
         setIsSuccess(true)
+        setIsLoading(false)
     })
     .catch(err => console.error('Error:', err)); 
 };
 
 
 
-
-
   return (
-    <div className='flex lg:flex-row flex-col gap-20 justify-center bg-orange-50 h-screen'>
-    <div className='lg:w-[40%] flex items-center flex-col gap-4 mt-56 lg:mt-20'>
+    <div className='flex lg:flex-row flex-col gap-24 justify-center bg-orange-50 h-screen'>
+    <div className='lg:w-[40%] flex items-center flex-col gap-4 mt-2 lg:mt-20'>
       <h1 className='font-semibold lg:leading-[3rem] w-screen text-xl lg:text-3xl lg:w-[80%] text-center'>Hi There! Foodie's got your back. No Sunday Scaries here. Join 100,000+ others and order in today</h1>
-      <img className='lg:w-full w-[30%] lg:block ' src={signUpImg} alt="" />
+      <img className='lg:w-full w-[60%] lg:block ' src={signUpImg} alt="" />
 
       <button onClick={authentication} className='bg-orange-600 rounded-lg text-white p-9 hover:scale-90 transition ease-in-out duration-500'>Authenticate</button>
     </div>
@@ -106,6 +106,12 @@ const SignUp = () => {
       <p className='text-center'>Already have an Account? <Link className='text-blue-500' to={'/auth/login'}>Login</Link></p>
     </div> */}
     
+
+    {isLoading && (
+                <div style={{ height: '100vh', width: '100vw', backgroundColor: 'black', opacity: '0.92', position: 'absolute', top: '0', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Puff visible={true} height="80" width="80" color="orange" ariaLabel="puff-loading" wrapperStyle={{}} wrapperClass=""/>
+                </div>
+            )}
   </div>
   )
 }
