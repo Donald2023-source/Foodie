@@ -21,7 +21,7 @@ const SignUp = () => {
       </div>
 
       <div className='lg:max-w-7xl md:max-w-5xl absolute top-0 h-full p-8 lg:p-20 lg:w-[60%] flex flex-col items-center gap-10 justify-center bg-[#070707b7]'>
-        <h2 className='p-6 rounded-full bg-[#5c5c5cb8] w-fit'><FiUser/></h2>
+        <h2 className='p-6 rounded-full bg-[#5c5c5cb8] text-xl w-fit'><FiUser/></h2>
 
         <div className='w-full'>
           <form className='flex flex-col gap-5 items-center justify-center w-full'>
