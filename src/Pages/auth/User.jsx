@@ -56,7 +56,7 @@ const SignUp = () => {
                 <input className='p-2' type="checkbox" />
                 <p className='leading-relaxed text-xs lg:text-md'>By creating an account, you agree to your Terms and have read and acknowledged the Global Privacy Statement</p>
             </fieldset>
-            <button className='p-3 w-full rounded-lg text-white border-none bg-mainColor'>Submit</button>
+            <button className='p-3 lg:w-[60%] w-full rounded-lg text-white border-none bg-mainColor hover:scale-105 transition-all'>Submit</button>
           </form>
         </div>
       </div>
