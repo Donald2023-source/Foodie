@@ -12,7 +12,7 @@ const ProfileLayout = ({children}) => {
       <div>
         <SideBar />
       </div>
-      <FaMoon onClick={toggleTheme} className='absolute cursor-pointer top-1 right-3' size={20}/>
+      <FaMoon onClick={toggleTheme} className='absolute cursor-pointer top-3 right-3' size={20}/>
 
    
       <div  className="w-screen lg:ml-[23%] px-3 lg:w-[80%] relative ">

@@ -2,12 +2,18 @@ import Logo from '../../assets/Logo.png'
 import Search  from '../../assets/Search.png'
 import Cart from '../../assets/Cart.png'
 import Menu from '../../assets/Menu.png'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { CardContext } from '../../Context/CardContext'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { useCart } from 'react-use-cart'
 
 const Navbar = () => {
+    
+    const navLink = [
+        {name: 'Home', href: '/home'},
+        {name: 'About', href: '/about'},
+        {name: 'Contact', href: '/contact'}
+    ]
     const {totalUniqueItems} = useCart()
      const inputRef = useRef(null);
      const [isInputFocused, setIsInputfocused] =useState(false) 
@@ -38,21 +44,26 @@ const Navbar = () => {
                 </span>
                
                <span className='flex gap-5 items-center cursor-pointer'>
-                <Link to={'/auth/signup'}>
-               <button className='border lg:hidden  bg-black text-white py-2 px-4 rounded-xl'>Sign Up</button>
-               </Link>
+                
                 <img onClick={HandleNav} className='h-8 lg:hidden  cursor-pointer' src={Menu} />
 
                 </span>
                 </div>
                 <div>
                 <ul className={ nav
-              ? "lg:hidden fixed w-screen h-[100%] z-50 flex flex-col gap-7 items-center shadow-xl  rounded-xl bg-white"
+              ? "lg:hidden fixed top-0 w-full  h-[100%] z-50 flex flex-col gap-7 items-center shadow-xl rounded-xl bg-white"
               : "lg:flex gap-10 hidden"}>
-                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-b-2'><Link to={'/home'}>Home</Link></li>
-                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-b-2'><Link to={'/about'}>About</Link></li>
-                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-b-2'>Support</li>
-                        <li className='py-14 lg:p-1 text-center hover:text-[#F48E28] hover:text-xl transition ease-in duration-500 hover:border-b-2'><Link to={"/contact"}>Contact</Link></li>
+                        <li className='flex lg:flex-row h-full items-center justify-center flex-col gap-28'>
+                            {
+                                navLink.map((link, index) => {
+                                    return (
+                                        <NavLink key={index} className={(({isActive}) => `${isActive ? 'text-orange-400': ''} hover:text-gray-400 text-lg`)} to={link.href}>{link.name}</NavLink>
+                                    )
+                                })
+                            }
+
+                            <h2 onClick={() => setNav(false)} className='absolute top-5 font-bold text-2xl cursor-pointer right-10 flex ml-auto'>X</h2>
+                        </li>
                     </ul>
                 </div>
                 <Link to={'/auth/signup'}>

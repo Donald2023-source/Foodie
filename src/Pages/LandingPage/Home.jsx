@@ -1,8 +1,9 @@
 import Navbar from "./Navbar";
 import Hero from "./Hero";
-import Products from "./Products";
+import Products from "./Services";
 import Why from "./Why";
 import Footer from "../../Components/Footer";
+import Services from "./Services";
 const Home = () => {
     return (
         <>
@@ -10,7 +11,7 @@ const Home = () => {
          <div className='flex flex-col justify-center'>
          <Hero/>
         </div>
-        <Products/>
+        <Services/>
          <div className='mt-24'>
          <Why />
         </div>

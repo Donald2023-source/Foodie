@@ -15,7 +15,8 @@ const SideBar = () => {
     const [likedProducts, setLikedProducts] = useState([]);
     const sidebarRef = useRef(null);
 
-    const { theme } = useTheme()
+    const { theme } = useTheme();
+    
     useEffect(() => {
         const storedFavourites = JSON.parse(localStorage.getItem('likedProducts')) || [];
         setLikedProducts(storedFavourites);
@@ -39,7 +40,7 @@ const SideBar = () => {
         <div>
             <nav className='flex items-center justify-between lg:mt-0 lg:justify-end px-2'>
                 <FaBars
-                    className='lg:hidden cursor-pointer'
+                    className='lg:hidden mt-2 pl-1 cursor-pointer'
                     onClick={() => setIsAside(!isAside)}
                     size={25}
                     color='orange'

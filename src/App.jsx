@@ -1,12 +1,12 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home/Home";
+import Home from "./Pages/LandingPage/Home";
 import './App.css';
 import { CardProvider } from "./Context/CardContext";
 import { CartProvider } from "react-use-cart";
 import CheckoutWrapper from "./Components/CheckoutWrapper";
 import Contact from "./Pages/Contact";
-import Navbar from "./Pages/Home/Navbar";
+import Navbar from "./Pages/LandingPage/Navbar";
 import LandingPage from "./Components/LandingPage";
 import { ThemeProvider } from "./Context/themeContext";
 import SignUp from "./Pages/auth/signUp";
