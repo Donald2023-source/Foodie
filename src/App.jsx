@@ -9,7 +9,7 @@ import Contact from "./Pages/Contact";
 import Navbar from "./Pages/LandingPage/Navbar";
 import LandingPage from "./Components/LandingPage";
 import { ThemeProvider } from "./Context/themeContext";
-import SignUp from "./Pages/auth/signUp";
+import SignUp from "./Pages/auth/User";
 import Login from "./Pages/auth/Login";
 import Cart from "./Components/Cart";
 import ProfileHome from "./Pages/Profile/components/Home";
