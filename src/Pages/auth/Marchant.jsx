@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import image from "../../assets/pexels-jj-jordan-44924743-8195814.jpg";
 import logo from "../../assets/Logo.png";
-import { FiEye, FiEyeOff, FiUser, } from "react-icons/fi";
+import { FiEye, FiEyeOff, FiUser } from "react-icons/fi";
 import { motion } from "framer-motion"; 
 import { Link } from "react-router-dom";
+import { BsShop } from "react-icons/bs";
 
-const SignUp = () => {
+const MarchantSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -40,9 +41,9 @@ const SignUp = () => {
           className="p-6 rounded-full bg-[#5c5c5cb8] text-xl w-fit"
           initial={{ scale: 0.2, x: 0 }}
           animate={{ scale: 1, x: 2 }}
-          transition={{ duration: 3}}
+          transition={{ duration: 2 }}
         >
-          <FiUser />
+          <BsShop />
         </motion.h2>
 
         <div className="w-full">
@@ -57,7 +58,7 @@ const SignUp = () => {
               <input
                 className="outline-none text-lg px-2 bg-[#3a3a3a00] w-full"
                 type="text"
-                placeholder="Username"
+                placeholder="Buisiness Name"
               />
             </motion.fieldset>
 
@@ -78,6 +79,19 @@ const SignUp = () => {
                 onInput={(e) => {
                   e.target.value = e.target.value.replace(/[^0-9]/g, "");
                 }}
+              />
+            </motion.fieldset>
+
+            <motion.fieldset
+              className="relative bg-[#0000006f] text-gray-200 w-full lg:w-[60%] rounded-md p-2 flex items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <input
+                className="outline-none text-lg px-2 bg-[#3a3a3a00] w-full"
+                type="text"
+                placeholder="Location"
               />
             </motion.fieldset>
 
@@ -124,8 +138,8 @@ const SignUp = () => {
 
           <h2 className="text-white flex items-center gap-2 justify-center
            py-3">
-            Sign Up as a buisiness owner 
-            <Link className="underline text-mainColor" to={'/auth/marchant'}>Sign Up</Link>
+            Sign Up as a user 
+            <Link className="underline text-mainColor" to={'/auth/signup'}>Sign Up</Link>
           </h2>
         </div>
       </motion.div>
@@ -133,4 +147,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default MarchantSignUp;

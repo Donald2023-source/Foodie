@@ -23,7 +23,7 @@ const Hero = () => {
             <h2 className='font-extrabold lg:text-left text-center text-4xl leading-[3rem]'>The fattest Delivery In <span className='text-[#F48E28]'>Your City</span></h2>
             <h4 className='lg:text-left text-center leading-9'><span className='font-bold text-center text-[#F48E28] text-xl'>Welcome to Foodie!. </span>Never Worry about urgent deliveries. Foodie has you covered, We have your best interest in mind. Fast and efficient at all times and in all locations</h4>
 
-            <Link to={'/login'}>
+            <Link to={'/auth/signup'}>
                  <button className='border p-3 rounded-lg bg-[#EFAB68] text-white hover:bg-[#f47628] transition ease-in duration-150'>Order Now</button>
             </Link>
             
