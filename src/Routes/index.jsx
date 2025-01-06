@@ -17,6 +17,7 @@ import Favourites from "../Pages/Profile/components/Favourites";
 import About from "../Pages/About/About";
 import { AuthProvider } from "../Context/authContext";
 import MarchantSignUp from "../Pages/auth/Marchant";
+import Project from "../Components/Project";
 
 
 const Index = () => {
@@ -38,6 +39,7 @@ const Index = () => {
                 <Route path="/Menu" element={<ProfileLayout><Menu/></ProfileLayout>}/>
                 <Route path="/checkout" element={<ProfileLayout><Checkout/></ProfileLayout>}/>
                 <Route path="/favourite" element={<ProfileLayout><Favourites/></ProfileLayout>}/>
+                
               </Routes>
               
             </BrowserRouter>

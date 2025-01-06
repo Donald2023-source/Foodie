@@ -14,12 +14,12 @@ const SignUp = () => {
 
   return (
     <motion.div
-      className="container relative flex"
+      className="relative w-full flex"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="h-screen w-screen border">
+      <div className="h-screen w-full border">
         <motion.img
           className="w-full h-full object-cover flex items-center justify-center"
           src={image}
@@ -46,7 +46,7 @@ const SignUp = () => {
         </motion.h2>
 
         <div className="w-full">
-          <form className="flex flex-col gap-5 items-center justify-center w-full">
+          <form className="flex flex-col lg:w-fit gap-5 items-center mx-auto sm:w-full 2xl:w-full md:w-full justify-center">
             
           <motion.fieldset
               className="relative bg-[#0000006f] text-gray-200 w-full lg:w-[60%] rounded-md p-2 flex items-center"

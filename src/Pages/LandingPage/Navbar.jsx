@@ -35,7 +35,7 @@ const Navbar = () => {
         <>
         <div>
             <nav>
-            <div className='lg:flex lg:gap-[8rem] lg:p-1 py-6 items-center w-screen justify-around md:p-5 px-2'>
+            <div className='lg:flex lg:gap-[8rem] lg:p-1 py-6 items-center w-screen justify-around md:p-5 px-2 sm:px-4 md:px-1'>
                 
                 <div className='flex justify-between items-center'>
                     <span className='flex items-center font-bold text-[#f4762874]'>
@@ -45,7 +45,7 @@ const Navbar = () => {
                
                <span className='flex gap-5 items-center cursor-pointer'>
                 
-                <img onClick={HandleNav} className='h-8 lg:hidden  cursor-pointer' src={Menu} />
+                <img onClick={HandleNav} className='h-5 lg:hidden  cursor-pointer' src={Menu} />
 
                 </span>
                 </div>
@@ -62,7 +62,7 @@ const Navbar = () => {
                                 })
                             }
 
-                            <h2 onClick={() => setNav(false)} className='absolute top-5 font-bold text-2xl cursor-pointer right-10 flex ml-auto'>X</h2>
+                            <h2 onClick={() => setNav(false)} className='absolute top-5 lg:hidden font-bold text-2xl cursor-pointer right-10 flex ml-auto'>X</h2>
                         </li>
                     </ul>
                 </div>

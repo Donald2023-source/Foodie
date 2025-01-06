@@ -15,7 +15,7 @@ const MarchantSignUp = () => {
 
   return (
     <motion.div
-      className="container relative flex"
+      className="w-full relative flex"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
